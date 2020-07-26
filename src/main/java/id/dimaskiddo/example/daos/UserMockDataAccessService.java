@@ -1,21 +1,21 @@
-package id.dimaskiddo.example.dao;
+package id.dimaskiddo.example.daos;
 
 import org.springframework.stereotype.Repository;
 
-import id.dimaskiddo.example.model.User;
+import id.dimaskiddo.example.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository("fakeDao")
-public class FakeUserDataAccessService implements UserDao {
+@Repository("MockDao")
+public class UserMockDataAccessService implements UserDao {
 
     private static List<User> DB = new ArrayList<>();
 
     @Override
-    public List<User> getAllUser() {
+    public List<User> getUsers() {
         return DB;
     }
 

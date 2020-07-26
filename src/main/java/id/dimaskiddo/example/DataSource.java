@@ -1,4 +1,4 @@
-package id.dimaskiddo.example.datasource;
+package id.dimaskiddo.example;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MariaDBDataSource {
+public class DataSource {
 
     @Bean
     @ConfigurationProperties("app.datasource")

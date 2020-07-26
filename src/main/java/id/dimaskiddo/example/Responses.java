@@ -1,4 +1,4 @@
-package id.dimaskiddo.example.helper;
+package id.dimaskiddo.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
@@ -7,15 +7,19 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
 @ControllerAdvice
-public class ApiResponseHelper {
+public class Responses {
 
-    public ResponseEntity<String> handleSuccessResponse() {
+    public ResponseEntity<String> responseSuccess(String msg) {
+        if (msg.length() == 0) {
+            msg = "Success";
+        }
+
         return ResponseEntity.status(HttpStatus.OK)
                 .body("{\"status\": " + HttpStatus.OK.value()
-                        + ", \"message\": \"Success\"}");
+                        + ", \"message\": \""+ msg +"\"}");
     }
 
-    public ResponseEntity<String> handleSuccessResponseWithData(Object data) {
+    public ResponseEntity<String> responseSuccessWithData(Object data) {
         try {
             ObjectMapper objMap = new ObjectMapper();
             String jsonStr = objMap.writeValueAsString(data);
@@ -30,13 +34,13 @@ public class ApiResponseHelper {
         }
     }
 
-    public ResponseEntity<String> handleCreatedResponse() {
+    public ResponseEntity<String> responseCreated() {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("{\"status\": " +  HttpStatus.CREATED.value()
                         +", \"message\": \"Created\"}");
     }
 
-    public ResponseEntity<String> handleUpdatedResponse() {
+    public ResponseEntity<String> responseUpdated() {
         return ResponseEntity.status(HttpStatus.OK)
                 .body("{\"status\": " + HttpStatus.OK.value()
                         +", \"message\": \"Updated\"}");

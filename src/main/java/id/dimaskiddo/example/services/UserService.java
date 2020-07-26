@@ -1,11 +1,11 @@
-package id.dimaskiddo.example.service;
+package id.dimaskiddo.example.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import id.dimaskiddo.example.dao.UserDao;
-import id.dimaskiddo.example.model.User;
+import id.dimaskiddo.example.daos.UserDao;
+import id.dimaskiddo.example.models.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,12 +17,12 @@ public class UserService {
     private final UserDao userDao;
 
     @Autowired
-    public UserService(@Qualifier("mariadbDao") UserDao userDao) {
+    public UserService(@Qualifier("DBDao") UserDao userDao) {
         this.userDao = userDao;
     }
 
-    public List<User> getAllUser() {
-        return userDao.getAllUser();
+    public List<User> getUsers() {
+        return userDao.getUsers();
     }
 
     public int addUser(User user) {

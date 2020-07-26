@@ -1,4 +1,4 @@
-package id.dimaskiddo.example.model;
+package id.dimaskiddo.example.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,27 +1,27 @@
-package id.dimaskiddo.example.dao;
+package id.dimaskiddo.example.daos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import id.dimaskiddo.example.model.User;
+import id.dimaskiddo.example.models.User;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository("mariadbDao")
-public class MariaDBUserDataAccessService implements UserDao {
+@Repository("DBDao")
+public class UserDBDataAccessService implements UserDao {
 
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public MariaDBUserDataAccessService(JdbcTemplate jdbcTemplate) {
+    public UserDBDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
-    public List<User> getAllUser() {
+    public List<User> getUsers() {
         final String sql = "SELECT id, name FROM user";
 
         return jdbcTemplate.query(sql, (resultSet, i) -> {

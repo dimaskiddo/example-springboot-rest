@@ -1,6 +1,6 @@
 app:
   datasource:
-    jdbc-url: jdbc:mariadb://127.0.0.1:3306/example
+    jdbc-url: jdbc:mariadb://127.0.0.1:3306/example?useSSL=false&serverTimezone=Asia/Jakarta
     username: user
     password: password
     pool-size: 30
