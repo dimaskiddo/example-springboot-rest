@@ -1,8 +1,8 @@
-package id.dimaskiddo.example.daos;
+package id.dimaskiddo.example.dao;
 
 import org.springframework.stereotype.Repository;
 
-import id.dimaskiddo.example.models.User;
+import id.dimaskiddo.example.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

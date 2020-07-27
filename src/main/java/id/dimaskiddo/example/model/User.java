@@ -1,12 +1,12 @@
-package id.dimaskiddo.example.models;
+package id.dimaskiddo.example.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class User {
 
+    @NotBlank
     private final UUID id;
 
     @NotBlank

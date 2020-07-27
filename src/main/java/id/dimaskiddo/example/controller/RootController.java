@@ -1,4 +1,4 @@
-package id.dimaskiddo.example.controllers;
+package id.dimaskiddo.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,21 +6,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import id.dimaskiddo.example.Responses;
+import id.dimaskiddo.example.Response;
 
 @RequestMapping(value="/", produces={"application/json"})
 @RestController
 public class RootController {
 
     @Autowired
-    private final Responses responses;
+    private final Response response;
 
-    public RootController(Responses responses) {
-        this.responses = responses;
+    public RootController(Response response) {
+        this.response = response;
     }
 
     @GetMapping
     public ResponseEntity<String> getIndex() {
-        return responses.responseSuccess("Spring Boot Example REST is running");
+        return response.responseSuccess("Spring Boot Example REST is running");
     }
 }

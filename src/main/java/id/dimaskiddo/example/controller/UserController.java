@@ -1,4 +1,4 @@
-package id.dimaskiddo.example.controllers;
+package id.dimaskiddo.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import id.dimaskiddo.example.models.User;
-import id.dimaskiddo.example.services.UserService;
-import id.dimaskiddo.example.Responses;
+import id.dimaskiddo.example.model.User;
+import id.dimaskiddo.example.service.UserService;
+import id.dimaskiddo.example.Response;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -21,23 +21,23 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
-    private final Responses responses;
+    private final Response response;
 
     @Autowired
-    public UserController(UserService userService, Responses responses) {
+    public UserController(UserService userService, Response response) {
         this.userService = userService;
-        this.responses = responses;
+        this.response = response;
     }
 
     @GetMapping
     public ResponseEntity<String> getUsers() {
-        return responses.responseSuccessWithData(userService.getUsers());
+        return response.responseSuccessWithData(userService.getUsers());
     }
 
     @PostMapping
     public ResponseEntity<String> addUser(@Valid @NotNull @RequestBody User user) {
         if (userService.addUser(user) == 1) {
-            return responses.responseCreated();
+            return response.responseCreated();
         }
 
         throw new ResponseStatusException(
@@ -49,7 +49,7 @@ public class UserController {
     public ResponseEntity<String> getUserById(@PathVariable("id") UUID id) {
         User user = userService.getUserById(id).orElse(null);
         if (user != null) {
-            return responses.responseSuccessWithData(user);
+            return response.responseSuccessWithData(user);
         }
 
         throw new ResponseStatusException(
@@ -60,7 +60,7 @@ public class UserController {
     @PutMapping(path = "{id}")
     public ResponseEntity<String> udpateUserById(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody User user) {
         if (userService.updateUserById(id, user) == 1) {
-            return responses.responseUpdated();
+            return response.responseUpdated();
         }
 
         throw new ResponseStatusException(
@@ -71,7 +71,7 @@ public class UserController {
     @DeleteMapping(path = "{id}")
     public ResponseEntity<String> deleteUserById(@PathVariable("id") UUID id) {
         if (userService.deleteUserById(id) == 1) {
-            return responses.responseSuccess("");
+            return response.responseSuccess("");
         }
 
         throw new ResponseStatusException(

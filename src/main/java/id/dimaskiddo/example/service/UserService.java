@@ -1,11 +1,11 @@
-package id.dimaskiddo.example.services;
+package id.dimaskiddo.example.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import id.dimaskiddo.example.daos.UserDao;
-import id.dimaskiddo.example.models.User;
+import id.dimaskiddo.example.dao.UserDao;
+import id.dimaskiddo.example.model.User;
 
 import java.util.List;
 import java.util.Optional;

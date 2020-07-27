@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
 @ControllerAdvice
-public class Responses {
+public class Response {
 
     public ResponseEntity<String> responseSuccess(String msg) {
         if (msg.length() == 0) {

@@ -1,6 +1,6 @@
-package id.dimaskiddo.example.daos;
+package id.dimaskiddo.example.dao;
 
-import id.dimaskiddo.example.models.User;
+import id.dimaskiddo.example.model.User;
 
 import java.util.List;
 import java.util.Optional;
