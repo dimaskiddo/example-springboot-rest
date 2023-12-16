@@ -1,14 +1,13 @@
 package id.dimaskiddo.example.controller;
 
+import id.dimaskiddo.example.Response;
+import id.dimaskiddo.example.model.User;
+import id.dimaskiddo.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import id.dimaskiddo.example.model.User;
-import id.dimaskiddo.example.service.UserService;
-import id.dimaskiddo.example.Response;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

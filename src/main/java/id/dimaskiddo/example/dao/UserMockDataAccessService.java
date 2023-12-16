@@ -1,8 +1,7 @@
 package id.dimaskiddo.example.dao;
 
-import org.springframework.stereotype.Repository;
-
 import id.dimaskiddo.example.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +48,7 @@ public class UserMockDataAccessService implements UserDao {
     @Override
     public int deleteUserById(UUID id) {
         Optional<User> userMayBe = getUserById(id);
-        if (userMayBe.isEmpty()) {
+        if (!userMayBe.isPresent()) {
             return 0;
         }
 
