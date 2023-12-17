@@ -22,7 +22,6 @@ public class UserController {
     @Autowired
     private final Response response;
 
-    @Autowired
     public UserController(UserService userService, Response response) {
         this.userService = userService;
         this.response = response;
@@ -45,7 +44,7 @@ public class UserController {
     }
 
     @GetMapping(path = "{id}")
-    public ResponseEntity<String> getUserById(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> getUserById(@PathVariable UUID id) {
         User user = userService.getUserById(id).orElse(null);
         if (user != null) {
             return response.responseSuccessWithData(user);
@@ -57,7 +56,7 @@ public class UserController {
     }
 
     @PutMapping(path = "{id}")
-    public ResponseEntity<String> udpateUserById(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody User user) {
+    public ResponseEntity<String> udpateUserById(@PathVariable UUID id, @Valid @NotNull @RequestBody User user) {
         if (userService.updateUserById(id, user) == 1) {
             return response.responseUpdated();
         }
@@ -68,7 +67,7 @@ public class UserController {
     }
 
     @DeleteMapping(path = "{id}")
-    public ResponseEntity<String> deleteUserById(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> deleteUserById(@PathVariable UUID id) {
         if (userService.deleteUserById(id) == 1) {
             return response.responseSuccess("");
         }

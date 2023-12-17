@@ -48,7 +48,7 @@ public class UserMockDataAccessService implements UserDao {
     @Override
     public int deleteUserById(UUID id) {
         Optional<User> userMayBe = getUserById(id);
-        if (!userMayBe.isPresent()) {
+        if (userMayBe.isEmpty()) {
             return 0;
         }
 

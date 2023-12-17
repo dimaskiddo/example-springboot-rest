@@ -1,7 +1,6 @@
 package id.dimaskiddo.example.dao;
 
 import id.dimaskiddo.example.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +13,6 @@ public class UserDBDataAccessService implements UserDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    @Autowired
     public UserDBDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -44,12 +42,12 @@ public class UserDBDataAccessService implements UserDao {
     public Optional<User> getUserById(UUID id) {
         final String sql = "SELECT id, name FROM user WHERE id = ?";
 
-        User user = jdbcTemplate.queryForObject(sql, new Object[]{id.toString()}, (resultSet, i) -> {
+        User user = jdbcTemplate.queryForObject(sql, (resultSet, i) -> {
             return new User(
                     UUID.fromString(resultSet.getString("id")),
                     resultSet.getString("name")
             );
-        });
+        }, new Object[]{id.toString()});
 
         return Optional.ofNullable(user);
     }
@@ -57,7 +55,7 @@ public class UserDBDataAccessService implements UserDao {
     @Override
     public int updateUserById(UUID id, User user) {
         Optional<User> userMayBe = getUserById(id);
-        if (!userMayBe.isPresent()) {
+        if (userMayBe.isEmpty()) {
             return 0;
         }
 
@@ -71,7 +69,7 @@ public class UserDBDataAccessService implements UserDao {
     @Override
     public int deleteUserById(UUID id) {
         Optional<User> userMayBe = getUserById(id);
-        if (!userMayBe.isPresent()) {
+        if (userMayBe.isEmpty()) {
             return 0;
         }
 

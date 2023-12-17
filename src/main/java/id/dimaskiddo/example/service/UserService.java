@@ -2,7 +2,6 @@ package id.dimaskiddo.example.service;
 
 import id.dimaskiddo.example.dao.UserDao;
 import id.dimaskiddo.example.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,6 @@ public class UserService {
 
     private final UserDao userDao;
 
-    @Autowired
     public UserService(@Qualifier("DBDao") UserDao userDao) {
         this.userDao = userDao;
     }
