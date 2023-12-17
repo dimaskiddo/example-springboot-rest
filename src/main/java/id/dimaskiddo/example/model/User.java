@@ -1,8 +1,8 @@
 package id.dimaskiddo.example.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 
-import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class User {

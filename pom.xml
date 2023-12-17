@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.18</version>
+		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>id.dimaskiddo</groupId>
@@ -15,7 +15,7 @@
 	<description>Example of using SpringBoot for REST API</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<log4j2.version>2.17.1</log4j2.version>
 	</properties>
 

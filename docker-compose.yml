@@ -1,0 +1,19 @@
+version: '2'
+
+networks:
+  examplenet:
+    driver: bridge
+
+services:
+  example:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        ARGS_MVN_PACKAGE: "-Dmaven.test.skip=true"
+    image: "example/springboot:latest"
+    networks:
+      - examplenet
+    ports:
+      - 80:8080
+    restart: always
